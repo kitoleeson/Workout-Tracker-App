@@ -20,7 +20,9 @@ mongoose
 app.use(express.static("public")); // send client the to the "public" folder
 app.use(express.json()); // allow express to read incoming data as json
 
-app.get("/add-session", (request, response) => {
+app.post("/add_session", (request, response) => {
+	console.log("new add_session request");
+	console.log(request.body);
 	// const session = new Session({
 	// 	cycle: "modified nippard ppl 2023",
 	// 	workout: "push i",

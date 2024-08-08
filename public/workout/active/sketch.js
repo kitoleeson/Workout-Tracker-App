@@ -74,15 +74,18 @@ function createDivs() {
 			for (let j = 1; j <= parseInt(e.sets); j++) {
 				const set = document.createElement("div");
 				const en = e.number;
+				let reps = e.reps.includes("-")
+					? e.reps.split("-")[e.reps.split("-").length - 1]
+					: e.reps.replace(/\D/g, "");
 				set.className = "input_pair";
 				if (variable_reps == null)
 					set.innerHTML = `<label class="header">${j}</label>
-									<input pattern="[0-9]*" type="text" id="${en}.${j}w" />
-									<input pattern="[0-9]*" type="text" id="${en}.${j}r" value=${e.reps} />`;
+									<input type="number" step="any" inputmode="decimal" id="${en}.${j}w" value=0 />
+									<input type="number" step="any" inputmode="decimal" id="${en}.${j}r" value=${reps} />`;
 				else
 					set.innerHTML = `<label class="header">${j}</label>
-									<input pattern="[0-9]*" type="text"  id="${en}.${j}w" />
-									<input pattern="[0-9]*" type="text" id="${en}.${j}r" value="${
+									<input type="number" step="any" inputmode="decimal"  id="${en}.${j}w" value=0 />
+									<input type="number" step="any" inputmode="decimal" id="${en}.${j}r" value="${
 						variable_reps[j - 1]
 					}" />`;
 				div.appendChild(set);
@@ -121,12 +124,11 @@ function createDivs() {
 
 		// add confirm button
 		if (i == num_pages) {
-			const confirm = document.createElement("a");
-			confirm.className = "confirm space_under";
-			confirm.innerHTML = '<p class="header">confirm</p>';
-			confirm.onclick = () => {
-				console.log("workout saved");
-			};
+			const confirm = document.createElement("input");
+			confirm.className = "confirm space_under header info_pair";
+			confirm.type = "submit";
+			confirm.value = "submit";
+			confirm.onclick = () => console.log("workout saving");
 			div.appendChild(confirm);
 		}
 

@@ -75,3 +75,15 @@ ul {
 	margin: 0 0;
 	padding: 1em 2em 1em 2.5em;
 }
+
+input[type="submit"] {
+	height: auto;
+	width: auto;
+	padding: 2em;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
