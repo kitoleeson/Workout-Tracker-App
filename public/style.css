@@ -1,0 +1,151 @@
+/** @format */
+
+@font-face {
+	/* font designed by Alan Dague-Greene */
+	font-family: courier;
+	src: url(/fonts/CourierPrime-Regular.ttf);
+}
+
+@font-face {
+	/* font designed by Emre Parlak */
+	font-family: major;
+	src: url(/fonts/MajorMonoDisplay-Regular.ttf);
+}
+
+@font-face {
+	/* font designed by Juan Pablo del Peral & Huerta Tipográfica */
+	font-family: alegreya;
+	src: url(/fonts/Alegreya-Regular.ttf);
+}
+
+body {
+	margin: 0px;
+	background-color: #3c58ac;
+}
+
+/* REGULAR TEXT */
+* {
+	font-family: courier;
+	color: white;
+}
+h1 {
+	font-family: major;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 4vh;
+	display: block;
+	max-height: 75vh;
+
+	background-size: cover;
+	background-position-y: top;
+	background-repeat: no-repeat;
+
+	padding: 15vh 0 10vh 0;
+}
+h2 {
+	text-transform: lowercase;
+
+	margin: 20px 10px;
+}
+p {
+	text-transform: lowercase;
+	text-align: center;
+	font-size: 2vh;
+
+	margin: 0.5em 0.8em;
+}
+a {
+	text-decoration: none;
+}
+
+/* INFO CLUSTER */
+/* for logger page */
+.info_cluster {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: stretch;
+	width: fit-content;
+	max-width: 40vh;
+	margin: auto;
+}
+.info {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: stretch;
+	justify-content: center;
+
+	width: fit-content;
+	max-width: 40vh;
+	margin: auto;
+}
+.info_pair {
+	border: none;
+	background: #0d1647;
+	border-radius: 3em;
+
+	padding: 1em;
+}
+.confirm {
+	border: none;
+	background: #0d1647;
+	border-radius: 3em;
+
+	padding: 1em;
+}
+.info:hover > .info_pair {
+	background: #b5e2ff;
+}
+.info:hover > .info_pair > p {
+	color: #0d1647;
+}
+.confirm:hover {
+	background: #b5e2ff;
+}
+.confirm:hover > p {
+	color: #0d1647;
+}
+
+.header {
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #b5e2ff;
+}
+#current_exercises {
+	font-size: 1.5vh;
+}
+
+/* LINKS */
+.link-container {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: stretch;
+	justify-content: center;
+	background: #0d1647;
+	border-radius: 2em;
+
+	width: fit-content;
+	padding: 1em;
+	margin: auto;
+}
+
+.link-container > a {
+	text-decoration: none;
+	color: black;
+	text-transform: lowercase;
+	font-weight: bold;
+	font-size: larger;
+	font-family: major;
+	text-align: center;
+
+	box-sizing: border-box;
+	background-color: azure;
+	border-radius: 2em;
+
+	padding: 0.7em 2em;
+	margin: 1em 3em;
+}
+
+.link-container > a:hover {
+	background: #a9b7de;
+	color: white;
+}

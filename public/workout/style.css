@@ -1,0 +1,67 @@
+/** @format */
+
+h1 {
+	padding: 15vh 0 7vh 0;
+}
+
+.info_cluster {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: stretch;
+	width: auto;
+	max-width: 40vh;
+	margin: auto;
+}
+
+.input_pair {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	align-items: center;
+	max-width: 40vh;
+	min-width: 30vh;
+
+	border: none;
+	background: #0d1647;
+	border-radius: 3em;
+
+	padding: 1em;
+}
+
+.spread_plan {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	max-width: 40vh;
+	min-width: 30vh;
+	margin: 0.5vh 0 0 0;
+}
+.spread_plan > p {
+	margin: 0;
+	text-align: right;
+	max-width: 30vh;
+}
+
+input {
+	background-color: aliceblue;
+	height: 2em;
+	width: 4em;
+	font-family: alegreya;
+	font-size: medium;
+	text-align: center;
+	color: #0d1647;
+	border-radius: 1em;
+}
+
+label {
+	text-transform: lowercase;
+	text-align: center;
+	font-size: 2vh;
+
+	margin: 0.5em 0.8em;
+}
+
+.space_under {
+	margin: 0 0 15vh 0;
+}

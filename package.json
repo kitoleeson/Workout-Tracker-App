@@ -1,0 +1,21 @@
+{
+  "name": "workout-tracker-app",
+  "version": "1.0.0",
+  "description": "workout tracker app/website prototype",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "workout",
+    "tracker"
+  ],
+  "author": "Kito Lee Son",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parse": "^5.5.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security"
+  }
+}

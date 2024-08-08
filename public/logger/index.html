@@ -1,0 +1,39 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Workout Logger</title>
+		<link rel="stylesheet" href="../style.css" />
+	</head>
+	<body>
+		<script src="../variables.js"></script>
+		<h1 id="username"></h1>
+		<div class="info_cluster">
+			<a class="info" href="../change_plan/">
+				<button class="info_pair">
+					<p class="header">date:</p>
+					<p id="current_date">no date available</p>
+				</button>
+				<button class="info_pair">
+					<p class="header">current workout cycle:</p>
+					<p id="current_cycle">no cycle available</p>
+				</button>
+				<button class="info_pair">
+					<p class="header">today's workout:</p>
+					<p id="current_workout">rest</p>
+				</button>
+			</a>
+			<a
+				class="confirm space_under"
+				onclick="confirmWorkoutPlan()"
+				href="../workout/plan/"
+			>
+				<p class="header">confirm</p>
+			</a>
+		</div>
+		<script src="sketch.js"></script>
+	</body>
+</html>

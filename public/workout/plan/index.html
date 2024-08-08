@@ -1,0 +1,30 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Workout Logger</title>
+		<link rel="stylesheet" href="../../style.css" />
+		<link rel="stylesheet" href="../style.css" />
+	</head>
+	<body>
+		<script src="../../variables.js"></script>
+		<h1 id="username"></h1>
+		<div class="info_cluster">
+			<a class="info_pair">
+				<p class="header">today's exercises:</p>
+				<p id="current_exercises">rest day, no exercises!</p>
+			</a>
+			<a
+				class="confirm space_under"
+				onclick="confirmWorkoutPlan()"
+				href="../active/"
+			>
+				<p class="header">confirm</p>
+			</a>
+		</div>
+		<script src="sketch.js"></script>
+	</body>
+</html>
