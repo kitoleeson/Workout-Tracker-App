@@ -7,6 +7,7 @@ let total_pages = 2;
 document.getElementById("username").innerHTML = sessionStorage.getItem("user");
 
 createDivs();
+// show(0);
 
 function createDivs() {
 	// point cycle and workout variables to variables (eventually database maybe)
@@ -34,21 +35,20 @@ function createDivs() {
 
 	console.log("exercise number list", exercise_number_list);
 
+	// set variables
+	const session_form = document.getElementById("session_form");
 	let n = 0;
 	// build each page
 	for (let i = 1; i <= num_pages; i++) {
 		const div = document.createElement("div");
 		div.id = `exercise${i}`;
-		const form = document.createElement("form");
-		form.className = "info_cluster";
-		form.id = `form${i}`;
+		div.className = "info_cluster";
 
 		// for each exercise with number i
 		while (
 			exercise_number_list.length > 0 &&
 			exercise_number_list[0].replace(/\D/g, "") == i
 		) {
-			console.log(i, exercise_number_list[0], n);
 			const e = exercises[n];
 
 			// build exercise
@@ -56,13 +56,13 @@ function createDivs() {
 			const name_header = document.createElement("a");
 			name_header.className = "info_pair";
 			name_header.innerHTML = `<p class="header">${e.number}) ${e.name}</p>`;
-			form.appendChild(name_header);
+			div.appendChild(name_header);
 
 			// set weight reps header
 			const swr_header = document.createElement("div");
 			swr_header.className = "input_pair";
 			swr_header.innerHTML = `<label class="header">set</label><label class="header">weight</label><label class="header">reps</label>`;
-			form.appendChild(swr_header);
+			div.appendChild(swr_header);
 
 			// each set
 			let variable_reps;
@@ -73,14 +73,19 @@ function createDivs() {
 			}
 			for (let j = 1; j <= parseInt(e.sets); j++) {
 				const set = document.createElement("div");
+				const en = e.number;
 				set.className = "input_pair";
 				if (variable_reps == null)
-					set.innerHTML = `<label class="header">${j}</label><input pattern="[0-9]*" type="text" /><input pattern="[0-9]*" type="text" value=${e.reps} />`;
+					set.innerHTML = `<label class="header">${j}</label>
+									<input pattern="[0-9]*" type="text" id="${en}.${j}w" />
+									<input pattern="[0-9]*" type="text" id="${en}.${j}r" value=${e.reps} />`;
 				else
-					set.innerHTML = `<label class="header">${j}</label><input pattern="[0-9]*" type="text" /><input pattern="[0-9]*" type="text" value="${
+					set.innerHTML = `<label class="header">${j}</label>
+									<input pattern="[0-9]*" type="text"  id="${en}.${j}w" />
+									<input pattern="[0-9]*" type="text" id="${en}.${j}r" value="${
 						variable_reps[j - 1]
 					}" />`;
-				form.appendChild(set);
+				div.appendChild(set);
 			}
 
 			// notes
@@ -93,7 +98,7 @@ function createDivs() {
 				list.appendChild(note);
 			});
 			notes.appendChild(list);
-			form.appendChild(notes);
+			div.appendChild(notes);
 
 			// next exercise algorithm
 			exercise_number_list.splice(0, 1);
@@ -112,7 +117,7 @@ function createDivs() {
 				<p class="header">next</p>
 			</a>
 		`;
-		form.appendChild(buttons);
+		div.appendChild(buttons);
 
 		// add confirm button
 		if (i == num_pages) {
@@ -122,12 +127,10 @@ function createDivs() {
 			confirm.onclick = () => {
 				console.log("workout saved");
 			};
-			form.appendChild(confirm);
+			div.appendChild(confirm);
 		}
 
-		div.appendChild(form);
-		document.body.appendChild(div);
-		console.log(`exercise ${i} built`);
+		session_form.appendChild(div);
 	}
 
 	// show first exercise
@@ -141,7 +144,7 @@ function show(direction) {
 	for (let i = 1; i <= total_pages; i++) {
 		document.getElementById(`exercise${i}`).style.display = "none";
 	}
-	document.getElementById(`exercise${destination}`).style.display = "block";
+	document.getElementById(`exercise${destination}`).style.display = "";
 	shown = destination;
 	return false;
 }

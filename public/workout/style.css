@@ -51,6 +51,7 @@ input {
 	font-size: medium;
 	text-align: center;
 	color: #0d1647;
+	border: none;
 	border-radius: 1em;
 }
 
@@ -63,5 +64,14 @@ label {
 }
 
 .space_under {
-	margin: 0 0 15vh 0;
+	margin-bottom: 15vh;
+}
+
+ul {
+	border: none;
+	background: #0d1647;
+	border-radius: 3em;
+
+	margin: 0 0;
+	padding: 1em 2em 1em 2.5em;
 }

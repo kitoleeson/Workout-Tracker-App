@@ -44,5 +44,9 @@ const session_schema = new Schema(
 	{ timestamps: true }
 );
 
+const Set = mongoose.model("set", set_schema);
+const Exercise = mongoose.model("exercise", exercise_schema);
 const Session = mongoose.model("session", session_schema);
+module.exports = Set;
+module.exports = Exercise;
 module.exports = Session;
