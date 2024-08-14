@@ -5,6 +5,7 @@ let total_pages = 2;
 
 // set data on page
 document.getElementById("username").innerHTML = sessionStorage.getItem("user");
+const session_form = document.getElementById("session_form");
 
 createDivs();
 // show(0);
@@ -36,8 +37,8 @@ function createDivs() {
 	console.log("exercise number list", exercise_number_list);
 
 	// set variables
-	const session_form = document.getElementById("session_form");
 	let n = 0;
+
 	// build each page
 	for (let i = 1; i <= num_pages; i++) {
 		const div = document.createElement("div");
@@ -84,7 +85,7 @@ function createDivs() {
 									<input type="number" step="any" inputmode="decimal" id="${en}.${j}r" value=${reps} />`;
 				else
 					set.innerHTML = `<label class="header">${j}</label>
-									<input type="number" step="any" inputmode="decimal"  id="${en}.${j}w" value=0 />
+									<input type="number" step="any" inputmode="decimal" id="${en}.${j}w" value=0 />
 									<input type="number" step="any" inputmode="decimal" id="${en}.${j}r" value="${
 						variable_reps[j - 1]
 					}" />`;
@@ -128,7 +129,6 @@ function createDivs() {
 			confirm.className = "confirm space_under header info_pair";
 			confirm.type = "submit";
 			confirm.value = "submit";
-			confirm.onclick = () => console.log("workout saving");
 			div.appendChild(confirm);
 		}
 
@@ -150,3 +150,24 @@ function show(direction) {
 	shown = destination;
 	return false;
 }
+
+async function sendData() {
+	const data = new FormData(session_form);
+
+	try {
+		const options = {
+			method: "POST",
+			body: data,
+		};
+		const response = await fetch("/add_session", options);
+		console.log(await response.json());
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+// take over form submission
+session_form.addEventListener("submit", (event) => {
+	event.preventDefault();
+	sendData();
+});
