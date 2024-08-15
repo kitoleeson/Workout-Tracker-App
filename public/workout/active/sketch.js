@@ -89,20 +89,25 @@ function createDivs() {
 			}
 
 			// notes
-			const notes = document.createElement("a");
-			notes.className = "info_pair";
+			const cues = document.createElement("a");
+			cues.className = "info_pair";
 			const list = document.createElement("ul");
 			e.notes.forEach((n) => {
 				const note = document.createElement("li");
 				note.innerHTML = n;
 				list.appendChild(note);
 			});
-			notes.appendChild(list);
-			div.appendChild(notes);
+			cues.appendChild(list);
+			div.appendChild(cues);
 
 			// next exercise algorithm
 			exercise_number_list.splice(0, 1);
 			n++;
+
+			const notes = document.createElement("div");
+			notes.className = "input_pair";
+			notes.innerHTML = `<textarea id="${e.number}.notes" cols="50" rows="10">`;
+			div.appendChild(notes);
 		}
 
 		// next and back button
@@ -150,11 +155,11 @@ function show(direction) {
 async function sendData() {
 	console.log(workout);
 
-	const session = new Session({
+	const data = {
 		cycle: cycle.name,
 		workout: workout.name,
 		exercises: [],
-	});
+	};
 
 	try {
 		const options = {

@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Exercise = require("./exercise_schema");
+const Exercise = require("./exercise");
 
 const session_schema = new Schema(
 	{
@@ -15,7 +15,8 @@ const session_schema = new Schema(
 			required: true,
 		},
 		exercises: {
-			type: [Exercise],
+			type: [Schema.Types.ObjectId],
+			ref: "exercise",
 			required: true,
 		},
 	},

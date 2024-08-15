@@ -87,3 +87,15 @@ input[type="number"]::-webkit-outer-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
 }
+
+textarea {
+	background-color: aliceblue;
+	width: 12em;
+	height: 6em;
+	font-family: alegreya;
+	font-size: medium;
+	text-align: start;
+	color: #0d1647;
+	border: none;
+	border-radius: 1em;
+}
