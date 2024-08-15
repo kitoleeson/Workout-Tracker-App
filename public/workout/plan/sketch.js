@@ -15,6 +15,6 @@ document.getElementById("current_exercises").innerHTML = exercise_string;
 
 function confirmWorkoutPlan() {
 	// save data to session storage
-	sessionStorage.setItem("cycle", nippard2023ppl.name);
+	sessionStorage.setItem("cycle", JSON.stringify(nippard2023ppl));
 	sessionStorage.setItem("workout", nippard2023ppl.workouts[0].name);
 }

@@ -7,22 +7,18 @@ let total_pages = 2;
 document.getElementById("username").innerHTML = sessionStorage.getItem("user");
 const session_form = document.getElementById("session_form");
 
+// point cycle and workout variables to variables (eventually database maybe)
+let cycle = JSON.parse(sessionStorage.getItem("cycle"));
+let workout;
+for (let i = 0; i < cycle.workouts.length; i++) {
+	if (cycle.workouts[i].name == sessionStorage.getItem("workout"))
+		workout = cycle.workouts[i];
+}
+
 createDivs();
 // show(0);
 
 function createDivs() {
-	// point cycle and workout variables to variables (eventually database maybe)
-	let cycle;
-	for (let i = 0; i < all_workout_plans.length; i++) {
-		if (all_workout_plans[i].name == sessionStorage.getItem("cycle"))
-			cycle = all_workout_plans[i];
-	}
-	let workout;
-	for (let i = 0; i < cycle.workouts.length; i++) {
-		if (cycle.workouts[i].name == sessionStorage.getItem("workout"))
-			workout = cycle.workouts[i];
-	}
-
 	// get exercises array from workout variable
 	const exercises = workout.exercises;
 	const exercise_number_list = [];
@@ -152,7 +148,13 @@ function show(direction) {
 }
 
 async function sendData() {
-	const data = new FormData(session_form);
+	console.log(workout);
+
+	const session = new Session({
+		cycle: cycle.name,
+		workout: workout.name,
+		exercises: [],
+	});
 
 	try {
 		const options = {

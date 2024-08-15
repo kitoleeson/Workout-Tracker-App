@@ -2,7 +2,7 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
-const Session = require("./models/schema");
+const Session = require("./models/session_schema");
 require("dotenv").config();
 
 const app = express();
