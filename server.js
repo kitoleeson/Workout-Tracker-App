@@ -92,3 +92,17 @@ function clearDatabases() {
 		console.log("databases clear");
 	});
 }
+
+/*
+
+------------------ TODO LIST ------------------
+- autofill form values based on previous workouts
+- change workout/cycle page
+- workout finished page
+- graphs and stuff
+- autofill other html values
+- autochoose workout based on day
+- click on exercise to see full history
+-----------------------------------------------
+
+*/
