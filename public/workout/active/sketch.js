@@ -15,12 +15,14 @@ for (let i = 0; i < cycle.workouts.length; i++) {
 		workout = cycle.workouts[i];
 }
 
+// get exercises array from workout variable
+const exercises = workout.exercises;
+
 createDivs();
 // show(0);
 
 function createDivs() {
-	// get exercises array from workout variable
-	const exercises = workout.exercises;
+	// create number list
 	const exercise_number_list = [];
 	exercises.forEach((e) => exercise_number_list.push(e.number));
 
@@ -153,18 +155,40 @@ function show(direction) {
 }
 
 async function sendData() {
-	console.log(workout);
-
-	const data = {
+	// initialize sesison data
+	const new_session = {
 		cycle: cycle.name,
 		workout: workout.name,
 		exercises: [],
 	};
 
+	// populate exercises array
+	for (let exercise of exercises) {
+		const en = exercise.number;
+		const new_exercise = {
+			name: exercise.name,
+			sets: [],
+			notes: document.getElementById(`${en}.notes`).value,
+		};
+		for (let i = 1; i <= parseInt(exercise.sets); i++) {
+			const new_set = {
+				load: parseInt(document.getElementById(`${en}.${i}w`).value),
+				reps: parseInt(document.getElementById(`${en}.${i}r`).value),
+			};
+			new_exercise.sets.push(new_set);
+		}
+		new_session.exercises.push(new_exercise);
+	}
+	console.log(new_session);
+
 	try {
+		console.log("sending");
 		const options = {
 			method: "POST",
-			body: data,
+			body: JSON.stringify(new_session),
+			headers: {
+				"Content-Type": "application/json",
+			},
 		};
 		const response = await fetch("/add_session", options);
 		console.log(await response.json());

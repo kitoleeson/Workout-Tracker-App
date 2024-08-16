@@ -4,6 +4,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const exercise_schema = new Schema({
+	session: {
+		type: Schema.Types.ObjectId,
+		ref: "session",
+		required: true,
+	},
 	name: {
 		type: String,
 		required: true,
