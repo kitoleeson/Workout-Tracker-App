@@ -157,6 +157,7 @@ function show(direction) {
 async function sendData() {
 	// initialize sesison data
 	const new_session = {
+		user: sessionStorage.getItem("user"),
 		cycle: cycle.name,
 		workout: workout.name,
 		exercises: [],

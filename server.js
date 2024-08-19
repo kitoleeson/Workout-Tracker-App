@@ -31,6 +31,7 @@ app.post("/add_session", (request, response) => {
 
 	// intialize session
 	const new_session = new Session({
+		user: data.user,
 		cycle: data.cycle,
 		workout: data.workout,
 		exercises: [],
@@ -96,13 +97,14 @@ function clearDatabases() {
 /*
 
 ------------------ TODO LIST ------------------
-- autofill form values based on previous workouts
-- change workout/cycle page
-- workout finished page
-- graphs and stuff
-- autofill other html values
-- autochoose workout based on day
-- click on exercise to see full history
+- add user to database form from sessionStorage ✅
+- autofill form values based on previous workouts ❌
+- change workout/cycle page ❌
+- workout finished page ❌
+- graphs and stuff ❌
+- autofill other html values ❌
+- autochoose workout based on day ❌
+- click on exercise to see full history ❌
 -----------------------------------------------
 
 */
