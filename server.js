@@ -2,20 +2,27 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
+const chalk = require("chalk");
+const readline = require("readline");
+require("dotenv").config();
+
 const Session = require("./models/session");
 const Exercise = require("./models/exercise");
 const Set = require("./models/set");
-require("dotenv").config();
 
 const app = express();
 
 // connect to mongodb
 const dbURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_KEY}@workout-tracker.bc8ncat.mongodb.net/workouts`;
+const port = process.env.PORT || 3001;
 mongoose
 	.connect(dbURI)
 	.then((result) => {
 		console.log("connected to db");
-		app.listen(3001, () => console.log("listening at 3001"));
+		app.listen(port, () => {
+			console.log(`listening at ${port}`);
+			clearDatabases();
+		});
 	})
 	.catch((error) => console.error(error));
 
@@ -41,6 +48,7 @@ app.post("/add_session", (request, response) => {
 	for (let exercise of data.exercises) {
 		const new_exercise = new Exercise({
 			session: new_session,
+			user: data.user,
 			name: exercise.name,
 			sets: [],
 			notes: exercise.notes,
@@ -49,6 +57,7 @@ app.post("/add_session", (request, response) => {
 		// initialize and add sets
 		for (let set of exercise.sets) {
 			const new_set = new Set({
+				user: data.user,
 				parent: new_exercise,
 				exercise: new_exercise.name,
 				load: set.load,
@@ -68,6 +77,7 @@ app.post("/add_session", (request, response) => {
 		response.json({
 			status: "complete!",
 			session_id: new_session.id,
+			redirectTo: "/",
 		});
 	});
 });
@@ -82,29 +92,69 @@ app.post("/login", (request, response) => {
 	response.json(data);
 });
 
-clearDatabases();
-
-function clearDatabases() {
-	Promise.all([
-		Session.deleteMany({}),
-		Exercise.deleteMany({}),
-		Set.deleteMany({}),
-	]).then(() => {
-		console.log("databases clear");
+async function clearDatabases() {
+	const rl = readline.createInterface({
+		input: process.stdin,
+		output: process.stdout,
 	});
+
+	const askQuestionWithTimeout = (question, timeoutDuration) => {
+		return new Promise((resolve, reject) => {
+			let timer;
+
+			rl.question(question, (answer) => {
+				clearTimeout(timer);
+				resolve(answer);
+			});
+
+			timer = setTimeout(() => {
+				rl.close();
+				reject(new Error("Timeout"));
+			}, timeoutDuration);
+		});
+	};
+
+	try {
+		const answer = await askQuestionWithTimeout(
+			chalk.bold.yellow(">> do you want to clear databases?") + " (y/n) ",
+			60000
+		); // 60 seconds timeout
+		if (["yes", "y", "yea", "yeah"].includes(answer.toLowerCase())) {
+			await Promise.all([
+				Session.deleteMany({}),
+				Exercise.deleteMany({}),
+				Set.deleteMany({}),
+			]);
+			console.log(chalk.bold.yellow("databases cleared"));
+		} else {
+			console.log(chalk.bold.yellow("databases not cleared"));
+		}
+	} catch (error) {
+		if (error.message === "Timeout") {
+			console.log(
+				chalk.bold.yellow("operation timed out. databases not cleared.")
+			);
+			// Execute your alternative function here
+		} else {
+			console.error(chalk.bold.yellow("an unexpected error occurred:"), error);
+		}
+	} finally {
+		rl.close(); // Ensure readline interface is closed after operation
+	}
 }
 
 /*
 
 ------------------ TODO LIST ------------------
 - add user to database form from sessionStorage ✅
+- optional clear databases on server ✅
 - autofill form values based on previous workouts ❌
 - change workout/cycle page ❌
-- workout finished page ❌
-- graphs and stuff ❌
-- autofill other html values ❌
 - autochoose workout based on day ❌
+- workout finished page ❌
 - click on exercise to see full history ❌
+- autofill other html values ❌
+- graphs and stuff ❌
 -----------------------------------------------
 
 */

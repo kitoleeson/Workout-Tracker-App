@@ -6,6 +6,10 @@ const Exercise = require("./exercise");
 
 const session_schema = new Schema(
 	{
+		user: {
+			type: String,
+			required: true,
+		},
 		cycle: {
 			type: String,
 			required: true,

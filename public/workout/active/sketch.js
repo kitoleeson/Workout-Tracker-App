@@ -192,7 +192,9 @@ async function sendData() {
 			},
 		};
 		const response = await fetch("/add_session", options);
-		console.log(await response.json());
+		const json = await response.json();
+		console.log(json);
+		if (json.redirectTo) window.location.href = json.redirectTo;
 	} catch (error) {
 		console.error(error);
 	}
