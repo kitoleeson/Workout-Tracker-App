@@ -29,6 +29,21 @@ mongoose
 app.use(express.static("public")); // send client the to the "public" folder
 app.use(express.json()); // allow express to read incoming data as json
 
+// POST: login
+app.post("/login", (request, response) => {
+	const data = request.body;
+	console.log(`${data.user} has logged in`);
+	console.log(data);
+	data.status = "login success";
+	data.timestamp = Date.now();
+	data.date = new Date().toString();
+	response.json(data);
+});
+
+// GET: setup session
+app.get("/set_session", (request, response) => {});
+
+// POST: add session
 app.post("/add_session", (request, response) => {
 	console.log("new add_session request");
 	const data = request.body;
@@ -80,16 +95,6 @@ app.post("/add_session", (request, response) => {
 			redirectTo: "/",
 		});
 	});
-});
-
-app.post("/login", (request, response) => {
-	const data = request.body;
-	console.log(`${data.user} has logged in`);
-	console.log(data);
-	data.status = "login success";
-	data.timestamp = Date.now();
-	data.date = new Date().toString();
-	response.json(data);
 });
 
 async function clearDatabases() {
@@ -148,8 +153,8 @@ async function clearDatabases() {
 ------------------ TODO LIST ------------------
 - add user to database form from sessionStorage ✅
 - optional clear databases on server ✅
-- autofill form values based on previous workouts ❌
 - change workout/cycle page ❌
+- autofill form values based on previous workouts ❌
 - autochoose workout based on day ❌
 - workout finished page ❌
 - click on exercise to see full history ❌
