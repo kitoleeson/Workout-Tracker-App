@@ -40,8 +40,21 @@ app.post("/login", (request, response) => {
 	response.json(data);
 });
 
+// GET: get cycle
+app.get("/get_session", async (request, response) => {
+	const session = await Session.findOne({ user: request.user }).sort({
+		createdAt: -1,
+	});
+	response.json({
+		user: request.user,
+		cycle: session.cycle,
+	});
+});
+
 // GET: setup session
-app.get("/set_session", (request, response) => {});
+app.get("/set_session", (request, response) => {
+	// pass in session request
+});
 
 // POST: add session
 app.post("/add_session", (request, response) => {
@@ -153,6 +166,7 @@ async function clearDatabases() {
 ------------------ TODO LIST ------------------
 - add user to database form from sessionStorage ✅
 - optional clear databases on server ✅
+- database for workout programs ❌
 - change workout/cycle page ❌
 - autofill form values based on previous workouts ❌
 - autochoose workout based on day ❌
