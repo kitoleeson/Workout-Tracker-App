@@ -8,7 +8,7 @@ require("dotenv").config();
 
 const Session = require("./models/session");
 const Exercise = require("./models/exercise");
-const Set = require("./models/set");
+const Program = require("./models/program");
 
 const app = express();
 
@@ -41,13 +41,17 @@ app.post("/login", (request, response) => {
 });
 
 // GET: get cycle
-app.get("/get_session", async (request, response) => {
-	const session = await Session.findOne({ user: request.user }).sort({
+app.post("/get_cycle", async (request, response) => {
+	const data = request.body;
+	const session = await Session.findOne({ user: data.user }).sort({
 		createdAt: -1,
 	});
+	const cycle = await Program.findOne({ name: session.cycle });
+	const workout_num = (data.day + parseInt(cycle.offset)) % 7;
 	response.json({
-		user: request.user,
-		cycle: session.cycle,
+		user: data.user,
+		cycle: cycle.name,
+		workout: cycle.workouts[workout_num],
 	});
 });
 
@@ -74,6 +78,7 @@ app.post("/add_session", (request, response) => {
 
 	// initialize and add exercises
 	for (let exercise of data.exercises) {
+		if (exercise.sets[0].reps <= 0) continue;
 		const new_exercise = new Exercise({
 			session: new_session,
 			user: data.user,
@@ -84,15 +89,12 @@ app.post("/add_session", (request, response) => {
 
 		// initialize and add sets
 		for (let set of exercise.sets) {
-			const new_set = new Set({
-				user: data.user,
-				parent: new_exercise,
-				exercise: new_exercise.name,
+			if (set.reps <= 0) break;
+			const new_set = {
 				load: set.load,
 				reps: set.reps,
-			});
+			};
 			new_exercise.sets.push(new_set);
-			promises.push(new_set.save());
 		}
 
 		new_session.exercises.push(new_exercise);
@@ -105,7 +107,7 @@ app.post("/add_session", (request, response) => {
 		response.json({
 			status: "complete!",
 			session_id: new_session.id,
-			redirectTo: "/",
+			// redirectTo: "/",
 		});
 	});
 });
@@ -138,11 +140,7 @@ async function clearDatabases() {
 			60000
 		); // 60 seconds timeout
 		if (["yes", "y", "yea", "yeah"].includes(answer.toLowerCase())) {
-			await Promise.all([
-				Session.deleteMany({}),
-				Exercise.deleteMany({}),
-				Set.deleteMany({}),
-			]);
+			await Promise.all([Session.deleteMany({}), Exercise.deleteMany({})]);
 			console.log(chalk.bold.yellow("databases cleared"));
 		} else {
 			console.log(chalk.bold.yellow("databases not cleared"));
@@ -161,15 +159,46 @@ async function clearDatabases() {
 	}
 }
 
+function json2schema(program) {
+	const new_program = new Program({
+		name: program.name,
+		split: program.split,
+		offset: program.offset,
+		workouts: [],
+	});
+
+	for (let workout of program.workouts) {
+		const new_workout = {
+			name: workout.name,
+			duration: workout.duration,
+			exercises: [],
+		};
+
+		for (let exercise of workout.exercises) {
+			const new_exercise = {
+				number: exercise.number,
+				name: exercise.name,
+				sets: exercise.sets,
+				reps: exercise.reps,
+				notes: exercise.notes,
+			};
+			new_workout.exercises.push(new_exercise);
+		}
+		new_program.workouts.push(new_workout);
+	}
+
+	new_program.save().then(console.log("program saved to db"));
+}
+
 /*
 
 ------------------ TODO LIST ------------------
 - add user to database form from sessionStorage ✅
 - optional clear databases on server ✅
-- database for workout programs ❌
+- database for workout programs ✅
+- autochoose workout based on day ✅
 - change workout/cycle page ❌
 - autofill form values based on previous workouts ❌
-- autochoose workout based on day ❌
 - workout finished page ❌
 - click on exercise to see full history ❌
 - autofill other html values ❌

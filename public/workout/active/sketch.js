@@ -8,12 +8,8 @@ document.getElementById("username").innerHTML = sessionStorage.getItem("user");
 const session_form = document.getElementById("session_form");
 
 // point cycle and workout variables to variables (eventually database maybe)
-let cycle = JSON.parse(sessionStorage.getItem("cycle"));
-let workout;
-for (let i = 0; i < cycle.workouts.length; i++) {
-	if (cycle.workouts[i].name == sessionStorage.getItem("workout"))
-		workout = cycle.workouts[i];
-}
+let cycle = sessionStorage.getItem("cycle");
+let workout = JSON.parse(sessionStorage.getItem("workout"));
 
 // get exercises array from workout variable
 const exercises = workout.exercises;
@@ -173,8 +169,8 @@ async function sendData() {
 		};
 		for (let i = 1; i <= parseInt(exercise.sets); i++) {
 			const new_set = {
-				load: parseInt(document.getElementById(`${en}.${i}w`).value),
-				reps: parseInt(document.getElementById(`${en}.${i}r`).value),
+				load: document.getElementById(`${en}.${i}w`).value,
+				reps: document.getElementById(`${en}.${i}r`).value,
 			};
 			new_exercise.sets.push(new_set);
 		}

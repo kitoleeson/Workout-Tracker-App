@@ -4,17 +4,16 @@
 document.getElementById("username").innerHTML = sessionStorage.getItem("user");
 
 let exercise_string = "";
-nippard2023ppl.workouts[0].exercises.forEach((e) => {
+const workout = JSON.parse(sessionStorage.getItem("workout"));
+workout.exercises.forEach((e) => {
 	exercise_string += `
     <div class="spread_plan">
         <p>${e.number}</p>
         <p>${e.name}</p>
     </div>`;
 });
-document.getElementById("current_exercises").innerHTML = exercise_string;
-
-function confirmWorkoutPlan() {
-	// save data to session storage
-	sessionStorage.setItem("cycle", JSON.stringify(nippard2023ppl));
-	sessionStorage.setItem("workout", nippard2023ppl.workouts[0].name);
+if (exercise_string == "") {
+	exercise_string = `<p>rest day!</p>`;
+	document.getElementById("continue_button").href = "/";
 }
+document.getElementById("current_exercises").innerHTML = exercise_string;

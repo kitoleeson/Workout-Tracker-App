@@ -4,6 +4,7 @@
 const nippard2023ppl = {
 	name: "modified nippard ppl 2023",
 	split: "ppl",
+	offset: 0,
 	workouts: [
 		// push i
 		{
@@ -274,7 +275,7 @@ const nippard2023ppl = {
 						"arms below parallel with the floor",
 						"use thumbless grip",
 						"constant tension (1s up, 1s down)",
-						"last set to failiure",
+						"last set to failure",
 					],
 				},
 				{
@@ -321,7 +322,7 @@ const nippard2023ppl = {
 					number: "7",
 					name: "diamond pushup",
 					sets: "1",
-					reps: "failure",
+					reps: "99",
 					notes: ["drop to knees after failure"],
 				},
 			],
@@ -346,7 +347,7 @@ const nippard2023ppl = {
 					number: "2",
 					name: "pull up",
 					sets: "1",
-					reps: "failure",
+					reps: "99",
 					notes: [
 						"focus on form (full rom, chest up)",
 						"add reps each week, if possible",

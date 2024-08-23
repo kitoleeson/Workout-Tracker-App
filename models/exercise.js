@@ -3,6 +3,17 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const set_schema = new Schema({
+	load: {
+		type: Number,
+		required: true,
+	},
+	reps: {
+		type: Number,
+		required: true,
+	},
+});
+
 const exercise_schema = new Schema({
 	user: {
 		type: String,
@@ -18,8 +29,7 @@ const exercise_schema = new Schema({
 		required: true,
 	},
 	sets: {
-		type: [Schema.Types.ObjectId],
-		ref: "set",
+		type: [set_schema],
 		required: true,
 	},
 	notes: [String],
