@@ -28,4 +28,9 @@ async function getCycle() {
 
 	document.getElementById("current_workout").innerHTML = json.workout.name;
 	sessionStorage.setItem("workout", JSON.stringify(json.workout));
+
+	if (json.cycle == "no current cycle") {
+		document.getElementById("confirm_button").innerHTML = "start cycle";
+		document.getElementById("confirm_link").href = "../change_plan/";
+	}
 }

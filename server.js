@@ -46,7 +46,17 @@ app.post("/get_cycle", async (request, response) => {
 	const session = await Session.findOne({ user: data.user }).sort({
 		createdAt: -1,
 	});
-	const cycle = await Program.findOne({ name: session.cycle });
+	if (!session) {
+		response.json({
+			user: data.user,
+			cycle: "no current cycle",
+			workout: { name: "no current workout" },
+		});
+		return;
+	}
+	const cycle = await Program.findOne({ name: session.cycle }).sort({
+		createdAt: -1,
+	});
 	const workout_num = (data.day + parseInt(cycle.offset)) % 7;
 	response.json({
 		user: data.user,
