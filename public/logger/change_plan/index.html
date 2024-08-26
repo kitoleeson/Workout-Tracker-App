@@ -1,0 +1,28 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Change Workout</title>
+		<link rel="stylesheet" href="../../style.css" />
+		<link rel="stylesheet" href="../../workout/style.css" />
+	</head>
+	<body>
+		<h1 id="username">user</h1>
+		<form
+			id="session_form"
+			method="POST"
+			enctype="multipart/form-data"
+			action="/add_session"
+			class="info_cluster"
+		>
+			<a class="info_pair">
+				<p class="header">current date:</p>
+				<p id="current_date">retrieving date..</p>
+			</a>
+		</form>
+		<script src="sketch.js"></script>
+	</body>
+</html>

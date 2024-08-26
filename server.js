@@ -21,7 +21,7 @@ mongoose
 		console.log("connected to db");
 		app.listen(port, () => {
 			console.log(`listening at ${port}`);
-			clearDatabases();
+			// clearDatabases();
 		});
 	})
 	.catch((error) => console.error(error));
@@ -43,6 +43,8 @@ app.post("/login", (request, response) => {
 // GET: get cycle
 app.post("/get_cycle", async (request, response) => {
 	const data = request.body;
+
+	// get last session and find session's cycle
 	const session = await Session.findOne({ user: data.user }).sort({
 		createdAt: -1,
 	});
@@ -57,17 +59,37 @@ app.post("/get_cycle", async (request, response) => {
 	const cycle = await Program.findOne({ name: session.cycle }).sort({
 		createdAt: -1,
 	});
-	const workout_num = (data.day + parseInt(cycle.offset)) % 7;
+
+	// find next workout
+	let next_workout;
+	for (let i in cycle.workouts) {
+		const workout = cycle.workouts[i];
+		if (workout.name == session.workout) {
+			next_workout = cycle.workouts[(parseInt(i) + 1) % cycle.workouts.length];
+			break;
+		}
+	}
 	response.json({
 		user: data.user,
 		cycle: cycle.name,
-		workout: cycle.workouts[workout_num],
+		workout: next_workout,
 	});
 });
 
-// GET: setup session
-app.get("/set_session", (request, response) => {
-	// pass in session request
+// GET: all cycles
+app.get("/all_cycles", async (request, response) => {
+	const all_programs = await Program.find().exec();
+	const program_info = [];
+	all_programs.forEach((p) => {
+		const new_program = {
+			name: p.name,
+			split: p.split,
+			num_workouts: p.workouts.length,
+		};
+		program_info.push(new_program);
+	});
+	response.json({ cycles: program_info });
+	console.log(program_info);
 });
 
 // POST: add session
@@ -173,7 +195,6 @@ function json2schema(program) {
 	const new_program = new Program({
 		name: program.name,
 		split: program.split,
-		offset: program.offset,
 		workouts: [],
 	});
 

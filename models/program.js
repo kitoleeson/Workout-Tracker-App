@@ -27,7 +27,6 @@ const program_schema = new Schema(
 	{
 		name: { type: String, required: true },
 		split: { type: String, required: true },
-		offset: { type: Number, required: true },
 		workouts: { type: [workout_schema], required: true },
 	},
 	{ timestamps: true }

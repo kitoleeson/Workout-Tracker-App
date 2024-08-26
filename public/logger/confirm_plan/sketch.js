@@ -2,9 +2,9 @@
 
 // set data on page
 document.getElementById("username").innerHTML = sessionStorage.getItem("user");
-document.getElementById("current_date").innerHTML = new Date()
-	.toString()
-	.slice(0, 15);
+const current_date = new Date().toString().slice(0, 15);
+document.getElementById("current_date").innerHTML = current_date;
+sessionStorage.setItem("date", current_date);
 
 getCycle();
 

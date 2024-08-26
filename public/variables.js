@@ -4,7 +4,6 @@
 const nippard2023ppl = {
 	name: "modified nippard ppl 2023",
 	split: "ppl",
-	offset: 0,
 	workouts: [
 		// push i
 		{
@@ -244,12 +243,6 @@ const nippard2023ppl = {
 					],
 				},
 			],
-		},
-		// rest
-		{
-			name: "rest i",
-			duration: 0,
-			exercises: [],
 		},
 		// push ii
 		{
