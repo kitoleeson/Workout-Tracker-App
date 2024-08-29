@@ -68,21 +68,33 @@ function createDivs() {
 			}
 			for (let j = 1; j <= parseInt(e.sets); j++) {
 				const set = document.createElement("div");
-				const en = e.number;
-				let reps = e.reps.includes("-")
-					? e.reps.split("-")[e.reps.split("-").length - 1]
-					: e.reps.replace(/\D/g, "");
 				set.className = "input_pair";
+				const en = e.number;
+				const reps = e.reps.replace(/[^0-9-]/g, "");
+				// let reps = e.reps.includes("-")
+				// 	? e.reps.split("-")[e.reps.split("-").length - 1]
+				// 	: e.reps.replace(/\D/g, "");
+
 				if (variable_reps == null)
-					set.innerHTML = `<label class="header">${j}</label>
-									<input type="number" step="any" inputmode="decimal" id="${en}.${j}w" value=0 />
-									<input type="number" step="any" inputmode="decimal" id="${en}.${j}r" value=${reps} />`;
+					set.innerHTML = `
+						<label class="header">${j}</label>
+						<input type="number" step="any" inputmode="decimal" id="${en}.${j}w" value=0 />
+						<div class="reps">
+							<input type="number" step="any" inputmode="decimal"
+							id="${en}.${j}r" value=${reps} />
+							<p>'${reps}'</p>
+						</div>
+					`;
 				else
-					set.innerHTML = `<label class="header">${j}</label>
-									<input type="number" step="any" inputmode="decimal" id="${en}.${j}w" value=0 />
-									<input type="number" step="any" inputmode="decimal" id="${en}.${j}r" value="${
-						variable_reps[j - 1]
-					}" />`;
+					set.innerHTML = `
+						<label class="header">${j}</label>
+						<input type="number" step="any" inputmode="decimal" id="${en}.${j}w" value=0 />
+						<div class="reps">
+							<input type="number" step="any" inputmode="decimal"
+							id="${en}.${j}r" value="${variable_reps[j - 1]}" />
+							<p>'${variable_reps[j - 1]}'</p>
+						</div>
+					`;
 				div.appendChild(set);
 			}
 

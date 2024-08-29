@@ -48,7 +48,7 @@ select,
 select option {
 	background-color: aliceblue;
 	height: 2em;
-	width: 4em;
+	width: 3em;
 	font-family: alegreya;
 	font-size: medium;
 	text-align: center;
@@ -109,4 +109,17 @@ select {
 
 select option {
 	text-align: left;
+}
+
+.reps {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	align-items: center;
+	border: none;
+}
+
+.reps > p {
+	margin: 0;
+	margin-left: 0.25em;
 }

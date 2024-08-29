@@ -230,7 +230,7 @@ function json2schema(program) {
 - optional clear databases on server ✅
 - database for workout programs ✅
 - autochoose workout based on day ✅
-- change workout/cycle page ❌
+- change workout/cycle page ✅
 - autofill form values based on previous workouts ❌
 - workout finished page ❌
 - click on exercise to see full history ❌
