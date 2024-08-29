@@ -15,13 +15,45 @@
 			id="session_form"
 			method="POST"
 			enctype="multipart/form-data"
-			action="/add_session"
 			class="info_cluster"
+			onsubmit="return submitNewWorkout()"
 		>
-			<a class="info_pair">
+			<!-- date -->
+			<div class="info_pair">
 				<p class="header">current date:</p>
 				<p id="current_date">retrieving date..</p>
-			</a>
+			</div>
+
+			<!-- cycle -->
+			<div class="input_pair">
+				<p class="header">choose cycle:</p>
+				<select id="current_cycle" onchange="getCycleInfo(this)" required>
+					<option value="no choice"></option>
+				</select>
+			</div>
+			<div id="cycle_info" class="info_pair" style="padding: 1em 2em">
+				<p class="header">cycle info:</p>
+				<p>please select a cycle</p>
+			</div>
+
+			<!-- workout -->
+			<div class="input_pair">
+				<p class="header">choose workout:</p>
+				<select id="current_workout" onchange="getWorkoutInfo(this)" required>
+					<option value="no choice"></option>
+				</select>
+			</div>
+			<div id="workout_info" class="info_pair" style="padding: 1em 2em">
+				<p class="header">exercises:</p>
+				<p>please select a workout</p>
+			</div>
+
+			<!-- submit -->
+			<input
+				type="submit"
+				class="confirm space_under header info_pair"
+				value="submit"
+			/>
 		</form>
 		<script src="sketch.js"></script>
 	</body>

@@ -78,13 +78,15 @@ app.post("/get_cycle", async (request, response) => {
 
 // GET: all cycles
 app.get("/all_cycles", async (request, response) => {
-	const all_programs = await Program.find().exec();
+	const all_programs = await Program.find().sort({ name: 1 }).exec();
+
+	// create and populate new array to exclude metadata
 	const program_info = [];
 	all_programs.forEach((p) => {
 		const new_program = {
 			name: p.name,
 			split: p.split,
-			num_workouts: p.workouts.length,
+			workouts: p.workouts,
 		};
 		program_info.push(new_program);
 	});

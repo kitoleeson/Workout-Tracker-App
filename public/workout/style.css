@@ -43,7 +43,9 @@ h1 {
 	max-width: 30vh;
 }
 
-input {
+input,
+select,
+select option {
 	background-color: aliceblue;
 	height: 2em;
 	width: 4em;
@@ -98,4 +100,13 @@ textarea {
 	color: #0d1647;
 	border: none;
 	border-radius: 1em;
+}
+
+select {
+	width: 6em;
+	text-align-last: center;
+}
+
+select option {
+	text-align: left;
 }
