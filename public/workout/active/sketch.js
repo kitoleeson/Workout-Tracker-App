@@ -13,6 +13,23 @@ let workout = JSON.parse(sessionStorage.getItem("workout"));
 
 // get exercises array from workout variable
 const exercises = workout.exercises;
+const previous_exercises = getPreviousWorkout();
+
+getPreviousWorkout();
+
+async function getPreviousWorkout() {
+	const options = {
+		method: "POST",
+		body: JSON.stringify(exercises.map((e) => e.name)),
+		headers: {
+			"Content-Type": "application/json",
+		},
+	};
+	const response = await fetch("/get_previous_workout", options);
+	const json = await response.json();
+	console.log(json);
+	return json.exercises;
+}
 
 createDivs();
 // show(0);
@@ -70,7 +87,15 @@ function createDivs() {
 				const set = document.createElement("div");
 				set.className = "input_pair";
 				const en = e.number;
-				const reps = e.reps.replace(/[^0-9-]/g, "");
+
+				let reps = 0;
+				// if()
+
+				// if have previous rep & weight, fill from there
+				// else if it has only digit ([^0-9-]) fill reps and 0 for weight
+				// else take out all non-numeric and fill using max in rep range
+				const rep_goal = e.reps.replace(/[^0-9-]/g, "");
+				// const reps = rep_goal == "" ? 0 : rep_goal;
 				// let reps = e.reps.includes("-")
 				// 	? e.reps.split("-")[e.reps.split("-").length - 1]
 				// 	: e.reps.replace(/\D/g, "");
@@ -81,7 +106,7 @@ function createDivs() {
 						<input type="number" step="any" inputmode="decimal" id="${en}.${j}w" value=0 />
 						<div class="reps">
 							<input type="number" step="any" inputmode="decimal"
-							id="${en}.${j}r" value=${reps} />
+							id="${en}.${j}r" value=${rep_goal} />
 							<p>'${reps}'</p>
 						</div>
 					`;
@@ -166,7 +191,7 @@ async function sendData() {
 	// initialize sesison data
 	const new_session = {
 		user: sessionStorage.getItem("user"),
-		cycle: cycle.name,
+		cycle: cycle,
 		workout: workout.name,
 		exercises: [],
 	};

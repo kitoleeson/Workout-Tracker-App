@@ -94,6 +94,49 @@ app.get("/all_cycles", async (request, response) => {
 	console.log(program_info);
 });
 
+app.post("/get_previous_workout", async (request, response) => {
+	console.log("getting previous workout");
+	const exercises = request.body;
+	console.log(exercises, "\n");
+
+	const found_exercises = [];
+	const all_exercises = [];
+
+	const num_found = (exercise) => {
+		let num = 0;
+		for (let e of found_exercises) if (e == exercise) num++;
+		return num;
+	};
+
+	for (let exercise of exercises) {
+		const n = num_found(exercise);
+
+		const prev_exercises = await Exercise.find({ name: exercise })
+			.sort({ createdAt: -1 })
+			.limit(n + 1)
+			.exec();
+
+		console.log(exercise.toUpperCase(), n);
+		console.log(prev_exercises);
+
+		// make default for it no previous exercise is found and grabbing exercises over multiple sessions
+		// then autofill
+
+		found_exercises.push(exercise);
+		const new_exercise = prev_exercises[prev_exercises.length - 1];
+		all_exercises.push({
+			name: new_exercise.name,
+			sets: new_exercise.sets,
+			notes: new_exercise.notes,
+		});
+	}
+
+	response.json({
+		status: "working on it",
+		exercises: all_exercises,
+	});
+});
+
 // POST: add session
 app.post("/add_session", (request, response) => {
 	console.log("new add_session request");
