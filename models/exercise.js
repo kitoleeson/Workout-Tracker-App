@@ -14,26 +14,29 @@ const set_schema = new Schema({
 	},
 });
 
-const exercise_schema = new Schema({
-	user: {
-		type: String,
-		requred: true,
+const exercise_schema = new Schema(
+	{
+		user: {
+			type: String,
+			requred: true,
+		},
+		session: {
+			type: Schema.Types.ObjectId,
+			ref: "session",
+			required: true,
+		},
+		name: {
+			type: String,
+			required: true,
+		},
+		sets: {
+			type: [set_schema],
+			required: true,
+		},
+		notes: [String],
 	},
-	session: {
-		type: Schema.Types.ObjectId,
-		ref: "session",
-		required: true,
-	},
-	name: {
-		type: String,
-		required: true,
-	},
-	sets: {
-		type: [set_schema],
-		required: true,
-	},
-	notes: [String],
-});
+	{ timestamps: true }
+);
 
 const Exercise = mongoose.model("exercise", exercise_schema);
 module.exports = Exercise;

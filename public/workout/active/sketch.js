@@ -13,9 +13,17 @@ let workout = JSON.parse(sessionStorage.getItem("workout"));
 
 // get exercises array from workout variable
 const exercises = workout.exercises;
-const previous_exercises = getPreviousWorkout();
+let previous_exercises;
 
-getPreviousWorkout();
+getPreviousWorkout()
+	.then((result) => {
+		previous_exercises = result;
+		console.log(previous_exercises);
+		createDivs();
+	})
+	.catch((error) => {
+		console.error("error getting previous workout:", error);
+	});
 
 async function getPreviousWorkout() {
 	const options = {
@@ -30,9 +38,6 @@ async function getPreviousWorkout() {
 	console.log(json);
 	return json.exercises;
 }
-
-createDivs();
-// show(0);
 
 function createDivs() {
 	// create number list
@@ -88,32 +93,31 @@ function createDivs() {
 				set.className = "input_pair";
 				const en = e.number;
 
+				let weight = 0;
 				let reps = 0;
-				// if()
-
-				// if have previous rep & weight, fill from there
-				// else if it has only digit ([^0-9-]) fill reps and 0 for weight
-				// else take out all non-numeric and fill using max in rep range
+				const reference = previous_exercises[n].sets;
 				const rep_goal = e.reps.replace(/[^0-9-]/g, "");
-				// const reps = rep_goal == "" ? 0 : rep_goal;
-				// let reps = e.reps.includes("-")
-				// 	? e.reps.split("-")[e.reps.split("-").length - 1]
-				// 	: e.reps.replace(/\D/g, "");
+
+				// if there is reference for this set, autofill values with reference
+				if (reference && reference.length >= j) {
+					weight = reference[j - 1].load;
+					reps = reference[j - 1].reps;
+				}
 
 				if (variable_reps == null)
 					set.innerHTML = `
 						<label class="header">${j}</label>
-						<input type="number" step="any" inputmode="decimal" id="${en}.${j}w" value=0 />
+						<input type="number" step="any" inputmode="decimal" id="${en}.${j}w" value=${weight} />
 						<div class="reps">
 							<input type="number" step="any" inputmode="decimal"
-							id="${en}.${j}r" value=${rep_goal} />
-							<p>'${reps}'</p>
+							id="${en}.${j}r" value=${reps} />
+							<p>'${rep_goal}'</p>
 						</div>
 					`;
 				else
 					set.innerHTML = `
 						<label class="header">${j}</label>
-						<input type="number" step="any" inputmode="decimal" id="${en}.${j}w" value=0 />
+						<input type="number" step="any" inputmode="decimal" id="${en}.${j}w" value=${weight} />
 						<div class="reps">
 							<input type="number" step="any" inputmode="decimal"
 							id="${en}.${j}r" value="${variable_reps[j - 1]}" />
@@ -132,6 +136,15 @@ function createDivs() {
 				note.innerHTML = n;
 				list.appendChild(note);
 			});
+			const reference_notes = previous_exercises[n].notes;
+			if (reference_notes && reference_notes[0] != "") {
+				reference_notes[0].split("\n").forEach((n) => {
+					const note = document.createElement("li");
+					note.innerHTML = n;
+					note.className = "temporary_note";
+					list.appendChild(note);
+				});
+			}
 			cues.appendChild(list);
 			div.appendChild(cues);
 

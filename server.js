@@ -40,7 +40,7 @@ app.post("/login", (request, response) => {
 	response.json(data);
 });
 
-// GET: get cycle
+// GET: get current program and next workout
 app.post("/get_cycle", async (request, response) => {
 	const data = request.body;
 
@@ -76,7 +76,7 @@ app.post("/get_cycle", async (request, response) => {
 	});
 });
 
-// GET: all cycles
+// GET: all workout programs for switch/start
 app.get("/all_cycles", async (request, response) => {
 	const all_programs = await Program.find().sort({ name: 1 }).exec();
 
@@ -94,36 +94,45 @@ app.get("/all_cycles", async (request, response) => {
 	console.log(program_info);
 });
 
+// GET: get previous workout data
 app.post("/get_previous_workout", async (request, response) => {
 	console.log("getting previous workout");
 	const exercises = request.body;
-	console.log(exercises, "\n");
 
 	const found_exercises = [];
 	const all_exercises = [];
+	console.log(exercises);
 
-	const num_found = (exercise) => {
+	// type: 0 = total, 1 = found
+	const num_found = (exercise, type = 0) => {
 		let num = 0;
-		for (let e of found_exercises) if (e == exercise) num++;
+		const array = type ? found_exercises : exercises;
+		for (let e of array) if (e == exercise) num++;
 		return num;
 	};
 
 	for (let exercise of exercises) {
-		const n = num_found(exercise);
+		// count how many times total the current exercise exists in workout
+		const t = num_found(exercise, 0);
+		// count how many times so far the current exercise exists in workout
+		const n = num_found(exercise, 1);
+
+		console.log(exercise.toUpperCase(), t, n);
 
 		const prev_exercises = await Exercise.find({ name: exercise })
 			.sort({ createdAt: -1 })
-			.limit(n + 1)
+			.limit(t)
 			.exec();
 
-		console.log(exercise.toUpperCase(), n);
-		console.log(prev_exercises);
+		// if no exercise is found, return only exercise name
+		if (prev_exercises.length <= 0) {
+			all_exercises.push({ name: exercise });
+			continue;
+		}
 
-		// make default for it no previous exercise is found and grabbing exercises over multiple sessions
-		// then autofill
+		const new_exercise = prev_exercises[t - n - 1];
 
 		found_exercises.push(exercise);
-		const new_exercise = prev_exercises[prev_exercises.length - 1];
 		all_exercises.push({
 			name: new_exercise.name,
 			sets: new_exercise.sets,
@@ -132,7 +141,7 @@ app.post("/get_previous_workout", async (request, response) => {
 	}
 
 	response.json({
-		status: "working on it",
+		status: "workout data gathered",
 		exercises: all_exercises,
 	});
 });
@@ -175,18 +184,26 @@ app.post("/add_session", (request, response) => {
 		}
 
 		new_session.exercises.push(new_exercise);
-		promises.push(new_exercise.save());
+		promises.push(new_exercise);
 	}
-	promises.push(new_session.save());
+	promises.push(new_session);
 
-	Promise.all(promises).then(() => {
-		console.log("new session added to database!");
-		response.json({
-			status: "complete!",
-			session_id: new_session.id,
-			// redirectTo: "/",
-		});
-	});
+	// use reduce() to ensure all promises are saved in order
+	const save_promises = promises.reduce((promise_chain, exercise) => {
+		return promise_chain.then(() => exercise.save());
+	}, Promise.resolve());
+
+	save_promises
+		.then(() => {
+			console.log("all exercises saved");
+			console.log("new session added to database!");
+			response.json({
+				status: "complete!",
+				session_id: new_session.id,
+				redirectTo: "/",
+			});
+		})
+		.catch((error) => console.error("error saving exercises: ", error));
 });
 
 async function clearDatabases() {
@@ -274,7 +291,7 @@ function json2schema(program) {
 - database for workout programs ✅
 - autochoose workout based on day ✅
 - change workout/cycle page ✅
-- autofill form values based on previous workouts ❌
+- autofill form values based on previous workouts ✅
 - workout finished page ❌
 - click on exercise to see full history ❌
 - autofill other html values ❌
