@@ -28,7 +28,7 @@ getPreviousWorkout()
 async function getPreviousWorkout() {
 	const options = {
 		method: "POST",
-		body: JSON.stringify(exercises.map((e) => e.name)),
+		body: JSON.stringify({ exercises: exercises.map((e) => e.name), user: sessionStorage.getItem("user") }),
 		headers: {
 			"Content-Type": "application/json",
 		},
@@ -45,9 +45,7 @@ function createDivs() {
 	exercises.forEach((e) => exercise_number_list.push(e.number));
 
 	// find number of pages needed
-	const num_pages = exercise_number_list[
-		exercise_number_list.length - 1
-	].replace(/\D/g, "");
+	const num_pages = exercise_number_list[exercise_number_list.length - 1].replace(/\D/g, "");
 	total_pages = num_pages;
 
 	console.log("exercise number list", exercise_number_list);
@@ -62,10 +60,7 @@ function createDivs() {
 		div.className = "info_cluster";
 
 		// for each exercise with number i
-		while (
-			exercise_number_list.length > 0 &&
-			exercise_number_list[0].replace(/\D/g, "") == i
-		) {
+		while (exercise_number_list.length > 0 && exercise_number_list[0].replace(/\D/g, "") == i) {
 			const e = exercises[n];
 
 			// build exercise
@@ -85,8 +80,7 @@ function createDivs() {
 			let variable_reps;
 			if (e.reps.includes(",")) {
 				variable_reps = e.reps.split(",");
-				for (let j = 0; j < variable_reps.length; j++)
-					variable_reps[j] = variable_reps[j].trim();
+				for (let j = 0; j < variable_reps.length; j++) variable_reps[j] = variable_reps[j].trim();
 			}
 			for (let j = 1; j <= parseInt(e.sets); j++) {
 				const set = document.createElement("div");

@@ -97,7 +97,8 @@ app.get("/all_cycles", async (request, response) => {
 // GET: get previous workout data
 app.post("/get_previous_workout", async (request, response) => {
 	console.log("getting previous workout");
-	const exercises = request.body;
+	const user = request.body.user;
+	const exercises = request.body.exercises;
 
 	const found_exercises = [];
 	const all_exercises = [];
@@ -119,10 +120,7 @@ app.post("/get_previous_workout", async (request, response) => {
 
 		console.log(exercise.toUpperCase(), t, n);
 
-		const prev_exercises = await Exercise.find({ name: exercise })
-			.sort({ createdAt: -1 })
-			.limit(t)
-			.exec();
+		const prev_exercises = await Exercise.find({ name: exercise, user: user }).sort({ createdAt: -1 }).limit(t).exec();
 
 		// if no exercise is found, return only exercise name
 		if (prev_exercises.length <= 0) {
@@ -241,9 +239,7 @@ async function clearDatabases() {
 		}
 	} catch (error) {
 		if (error.message === "Timeout") {
-			console.log(
-				chalk.bold.yellow("operation timed out. databases not cleared.")
-			);
+			console.log(chalk.bold.yellow("operation timed out. databases not cleared."));
 			// Execute your alternative function here
 		} else {
 			console.error(chalk.bold.yellow("an unexpected error occurred:"), error);
