@@ -15,11 +15,7 @@ const nippard2023ppl = {
 					name: "bench press",
 					sets: "1",
 					reps: "3-5",
-					notes: [
-						"slightly arched back",
-						"3 points of contact with bench",
-						"explosive reps",
-					],
+					notes: ["slightly arched back", "3 points of contact with bench", "explosive reps"],
 				},
 				{
 					number: "1b",
@@ -126,10 +122,7 @@ const nippard2023ppl = {
 					name: "omni-grip chest-supported machine row",
 					sets: "3",
 					reps: "10-12",
-					notes: [
-						"different grip for each set",
-						"squeeze shoulder blades together",
-					],
+					notes: ["different grip for each set", "squeeze shoulder blades together"],
 				},
 				{
 					number: "3a",
@@ -143,20 +136,14 @@ const nippard2023ppl = {
 					name: "static lat stretch",
 					sets: "2",
 					reps: "30s hold",
-					notes: [
-						"work, right, left, rest, work, left, right",
-						"grab something solid, lean hips back",
-					],
+					notes: ["work, right, left, rest, work, left, right", "grab something solid, lean hips back"],
 				},
 				{
 					number: "4",
 					name: "omni-direction face pull",
 					sets: "3",
 					reps: "12-15",
-					notes: [
-						"different direction for each set",
-						"low→high, mid→mid, high→low",
-					],
+					notes: ["different direction for each set", "low→high, mid→mid, high→low"],
 				},
 				{
 					number: "5",
@@ -191,13 +178,7 @@ const nippard2023ppl = {
 					name: "paused back squat",
 					sets: "2",
 					reps: "5",
-					notes: [
-						"75% previous set weight",
-						"pause for 2",
-						"3 seconds",
-						"explode up",
-						"hold breath whole way",
-					],
+					notes: ["75% previous set weight", "pause for 2", "3 seconds", "explode up", "hold breath whole way"],
 				},
 				{
 					number: "2",
@@ -211,11 +192,7 @@ const nippard2023ppl = {
 					name: "dumbell walking lunge",
 					sets: "2",
 					reps: "20 strides",
-					notes: [
-						"knees softly contact floor",
-						"control negative",
-						"don't let grip strength limit",
-					],
+					notes: ["knees softly contact floor", "control negative", "don't let grip strength limit"],
 				},
 				{
 					number: "4",
@@ -236,11 +213,7 @@ const nippard2023ppl = {
 					name: "decline plate crunch",
 					sets: "3",
 					reps: "10-12",
-					notes: [
-						"round lower back",
-						"squeeze abs together",
-						"use progressive overload",
-					],
+					notes: ["round lower back", "squeeze abs together", "use progressive overload"],
 				},
 			],
 		},
@@ -254,10 +227,7 @@ const nippard2023ppl = {
 					name: "incline barbell bench press",
 					sets: "3",
 					reps: "8, 5, 15",
-					notes: [
-						"moderate, heavy, lighter weight",
-						"grip just outside shoulder width",
-					],
+					notes: ["moderate, heavy, lighter weight", "grip just outside shoulder width"],
 				},
 				{
 					number: "2",
@@ -276,40 +246,28 @@ const nippard2023ppl = {
 					name: "floor reset skullcrusher",
 					sets: "3",
 					reps: "6-8",
-					notes: [
-						"reach extension w/ bar behind eyes",
-						"use progressive overload",
-					],
+					notes: ["reach extension w/ bar behind eyes", "use progressive overload"],
 				},
 				{
 					number: "4",
 					name: "bent-over cable pec flye",
 					sets: "3",
 					reps: "10-12",
-					notes: [
-						"bend forward, push straight down",
-						"hands together at end",
-						"feel stretch",
-					],
+					notes: ["bend forward, push straight down", "hands together at end", "feel stretch"],
 				},
 				{
 					number: "5",
 					name: "cable stretched lateral raise",
 					sets: "3",
 					reps: "20",
-					notes: [
-						"first 5 slow eccentric, next 10 consant, last 5 slow eccentric",
-					],
+					notes: ["first 5 slow eccentric, next 10 consant, last 5 slow eccentric"],
 				},
 				{
 					number: "6",
 					name: "plate front raise",
 					sets: "2",
 					reps: "15-20",
-					notes: [
-						"steer on the way up (alternating)",
-						"back to even on bottom",
-					],
+					notes: ["steer on the way up (alternating)", "back to even on bottom"],
 				},
 				{
 					number: "7",
@@ -353,21 +311,14 @@ const nippard2023ppl = {
 					name: "kroc row",
 					sets: "3",
 					reps: "10-12",
-					notes: [
-						"3 point row with allowance for slightly looser form",
-						"constant tension with control",
-					],
+					notes: ["3 point row with allowance for slightly looser form", "constant tension with control"],
 				},
 				{
 					number: "4",
 					name: "cable shrug-in",
 					sets: "3",
 					reps: "10-12",
-					notes: [
-						"shrug up and in",
-						"small lean forward",
-						"cables stretched behind",
-					],
+					notes: ["shrug up and in", "small lean forward", "cables stretched behind"],
 				},
 				{
 					number: "5",
@@ -381,10 +332,7 @@ const nippard2023ppl = {
 					name: "overhead cable bicep curl",
 					sets: "3",
 					reps: "10-12",
-					notes: [
-						"kneel down, curl with arm out to side",
-						"keep elbow in same spot",
-					],
+					notes: ["kneel down, curl with arm out to side", "keep elbow in same spot"],
 				},
 			],
 		},
@@ -405,11 +353,7 @@ const nippard2023ppl = {
 					name: "stiff-leg deadlift",
 					sets: "2",
 					reps: "8",
-					notes: [
-						"50-60% of working previous weight",
-						"regular deadlift with high hips",
-						"hinge at hips",
-					],
+					notes: ["50-60% of working previous weight", "regular deadlift with high hips", "hinge at hips"],
 				},
 				{
 					number: "2",
@@ -447,15 +391,246 @@ const nippard2023ppl = {
 					name: "roman chair leg raise",
 					sets: "3",
 					reps: "10-20",
-					notes: [
-						"curl lower back and squeeze abs",
-						"stop set once cant get legs to chest",
-						"slow negative",
-					],
+					notes: ["curl lower back and squeeze abs", "stop set once cant get legs to chest", "slow negative"],
 				},
 			],
 		},
 	],
 };
 
-const all_workout_plans = [nippard2023ppl, "50/50 ability ppl", "test2"];
+const graham2024pple = {
+	name: "graham 2024 4-day split",
+	split: "pple",
+	workouts: [
+		// chest & triceps
+		{
+			name: "chest & triceps",
+			duration: 90,
+			exercises: [
+				{
+					number: "1",
+					name: "incline dumbell bench press",
+					sets: "3",
+					reps: "8-10",
+					notes: ["slightly arched back", "arms at a 45-55° angle from body", "push through feet to explode up"],
+				},
+				{
+					number: "2",
+					name: "straight-bar lying skullcrushers",
+					sets: "3",
+					reps: "8",
+					notes: [
+						"keep elbows stationary, behind head",
+						"brace core throughout exercise",
+						"try floor reset if not feeling triceps",
+					],
+				},
+				{
+					number: "3",
+					name: "machine chest flye",
+					sets: "3",
+					reps: "12",
+					notes: [
+						"brace core throughout exercise",
+						"keep chest up high and puffed out",
+						"feel big stretch at end",
+						"integrated partials on last set (1 rep full rom, 1 rep lengthened partial)",
+					],
+				},
+				{
+					number: "4",
+					name: "cable tricep rope pushdown",
+					sets: "3",
+					reps: "10",
+					notes: [
+						"keep chest upright and puffed out",
+						"keep elbows stationary at sides",
+						"full lockout and push arms outwards",
+					],
+				},
+				{
+					number: "5",
+					name: "deficit pushups",
+					sets: "2",
+					reps: "failure",
+					notes: [
+						"raise hands on plates, descend underneath hand level",
+						"brace core throughout exercise",
+						"drop scap and engage abs",
+						"go for strict form, not number",
+					],
+				},
+			],
+		},
+		// back & biceps
+		{
+			name: "back & biceps",
+			duration: 90,
+			exercises: [
+				{
+					number: "1",
+					name: "lat pulldown",
+					sets: "4",
+					reps: "10",
+					notes: [
+						"middle overhand grip (1.5x shoulder)",
+						"touch bar to bottom of chest",
+						"use thumbless grip for mind-muscle",
+						"pull scap first, then pull arms down",
+						"feel lats deep stretch at top",
+						"slow eccentric",
+					],
+				},
+				{
+					number: "2",
+					name: "omni-grip assisted pull up",
+					sets: "3",
+					reps: "10",
+					notes: [
+						"normal, neutral, then wide grip",
+						"scap pull up first, then bend elbows",
+						"puffy and high chest",
+						"slow eccentric",
+					],
+				},
+				{
+					number: "3",
+					name: "ez-bar preacher curls",
+					sets: "3",
+					reps: "8",
+					notes: ["warm up first (very important)", "slow up and down"],
+				},
+				{
+					number: "4",
+					name: "single-arm cable baysian curls",
+					sets: "2",
+					reps: "10",
+					notes: ["stationary elbows behind body", "take it slow"],
+				},
+				{
+					number: "5",
+					name: "omni-direction face pulls",
+					sets: "3",
+					reps: "12",
+					notes: [
+						"different direction for each set",
+						"low→high, mid→mid, high→low",
+						"hold ropes reverse grip",
+						"pull metal piece to between eyes",
+					],
+				},
+			],
+		},
+		// quads, hamstrings & calves
+		{
+			name: "quads, hamstrings & calves",
+			duration: 90,
+			exercises: [
+				{
+					number: "1",
+					name: "barbell back squat",
+					sets: "3",
+					reps: "10, 8, 6",
+					notes: [
+						"do 2 sets of back hyperextensions before to activate lower back",
+						"brace core throughout exercise",
+						"go for depth and slowness",
+						"go heavier each set",
+						"feet slightly pointed outwards, externally rotate knees",
+					],
+				},
+				{
+					number: "2",
+					name: "steated calf-raises",
+					sets: "3",
+					reps: "15",
+					notes: ["stay in the bottom half", "fast concentric, slow eccentric"],
+				},
+				{
+					number: "3",
+					name: "seated leg curl",
+					sets: "3",
+					reps: "12",
+					notes: ["lean forward in seat to stretch hamstrings", "fast concentric, slow eccentric"],
+				},
+				{
+					number: "4",
+					name: "seated leg extension",
+					sets: "3",
+					reps: "12",
+					notes: ["lean back in seat to stretch quads", "fast concentric, slow eccentric"],
+				},
+				{
+					number: "5",
+					name: "jefferson curls",
+					sets: "3",
+					reps: "12",
+					notes: [
+						"stand on box or plates to elevate",
+						"round back at bottom, then systematically unfurl",
+						"pause at bottom, stretch hamstrings",
+					],
+				},
+			],
+		},
+		// shoulders, traps, forearms & abs
+		{
+			name: "shoulders, traps, forearms & abs",
+			duration: 90,
+			exercises: [
+				{
+					number: "1",
+					name: "seated cable row",
+					sets: "3",
+					reps: "10",
+					notes: [
+						"squeeze shoulder blades together",
+						"use thumbless grip for mind-muscle",
+						"pull scap first, then pull arms back",
+						"feel traps and shoulders pull apart at end",
+					],
+				},
+				{
+					number: "2",
+					name: "cross-body cable y-raise",
+					sets: "3",
+					reps: "12-15",
+					notes: [
+						"draw out a sword at bottom",
+						"flick out the sword at top",
+						"lift cable out and back",
+						"diagonal plane of motion",
+					],
+				},
+				{
+					number: "3",
+					name: "machine rear delt flye",
+					sets: "3",
+					reps: "12",
+					notes: [
+						"use a yoga block to get big stretch",
+						"reach out and back, sweep outwards",
+						"slightly round back",
+						"omni-grip to taste",
+					],
+				},
+				{
+					number: "4",
+					name: "behind-the-back straight-bar wrist curl",
+					sets: "3",
+					reps: "12",
+					notes: ["keep arms stationary", "go heavy, make it difficult", "slow eccentric"],
+				},
+				{
+					number: "5",
+					name: "abs circut",
+					sets: "3",
+					reps: "60",
+					notes: ["60s of n/s planks, pull throughs, twists, bear planks with taps"],
+				},
+			],
+		},
+	],
+};
+
+const all_workout_plans = [nippard2023ppl, graham2024pple, "50/50 ability ppl", "test2"];
