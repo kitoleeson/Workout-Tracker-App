@@ -1,16 +1,24 @@
 /** @format */
 
 :root {
+    /* default */
     --background: #3c58ac;
     --foreground: #0d1647;
     --hover: #b5e2ff;
+
+    /* christmas */
     --background: #00863d;
     --foreground: #cf001c;
     --hover: #f4bbc2;
+
+    /* winter */
+    --background: #ffffff;
+    --foreground: #d0c5f0;
+    --hover: #e0daf2;
 }
 
 h1 {
-    padding: 15vh 0 7vh 0;
+    margin: 15vh 7vh 7vh 7vh;
 }
 
 .info_cluster {

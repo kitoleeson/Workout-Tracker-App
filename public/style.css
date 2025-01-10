@@ -47,6 +47,9 @@ body {
     color: white;
 }
 h1 {
+    color: black;
+    background-color: var(--foreground);
+
     font-family: major;
     text-align: center;
     text-transform: uppercase;
@@ -58,7 +61,8 @@ h1 {
     background-position-y: top;
     background-repeat: no-repeat;
 
-    padding: 15vh 0 10vh 0;
+    border-radius: 3vh;
+    margin: 15vh 7vh 10vh 7vh;
 }
 h2 {
     text-transform: lowercase;
