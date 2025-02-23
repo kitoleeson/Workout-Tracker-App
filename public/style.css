@@ -33,12 +33,17 @@
     --background: #ffffff;
     --foreground: #d0c5f0;
     --hover: #e0daf2;
+
+    /* rainforest leaves */
+    --background: #ffffff;
+    --foreground: #013020;
+    --hover: #b2d4ab;
 }
 
 body {
     margin: 0px;
     background-color: var(--background);
-    background-image: url(backgrounds/winter.jpg);
+    background-image: url(backgrounds/rainforest-leaves.jpg);
 }
 
 /* REGULAR TEXT */
@@ -47,7 +52,7 @@ body {
     color: white;
 }
 h1 {
-    color: black;
+    color: white;
     background-color: var(--foreground);
 
     font-family: major;

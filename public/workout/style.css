@@ -15,6 +15,11 @@
     --background: #ffffff;
     --foreground: #d0c5f0;
     --hover: #e0daf2;
+
+    /* rainforest leaves */
+    --background: #ffffff;
+    --foreground: #013020;
+    --hover: #b2d4ab;
 }
 
 h1 {
