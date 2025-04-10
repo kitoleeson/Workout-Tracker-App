@@ -38,12 +38,17 @@
     --background: #ffffff;
     --foreground: #013020;
     --hover: #b2d4ab;
+
+    /* mountains */
+    --background: #ffffff;
+    --foreground: #8b4000;
+    --hover: #e49b0f;
 }
 
 body {
     margin: 0px;
     background-color: var(--background);
-    background-image: url(backgrounds/rainforest-leaves.jpg);
+    background-image: url(backgrounds/mountains.jpg);
 }
 
 /* REGULAR TEXT */
