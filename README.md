@@ -1,6 +1,6 @@
-# 💪 Workout Tracker
+# 💪🏾 Workout Tracker
 
-A sleek and simple web app for tracking workouts, monitoring progress, and staying fit. Whether you're lifting weights, running, or doing yoga, this app helps you stay accountable and organized with your fitness journey.
+A simple web app for tracking workouts and monitoring progress. Whether you're lifting weights, running, or doing yoga, this app helps you stay accountable and organized with your fitness journey.
 
 ## 🚀 Features
 
