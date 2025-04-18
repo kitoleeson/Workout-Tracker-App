@@ -1,151 +1,156 @@
 /** @format */
 
 :root {
-    /* default */
-    --background: #3c58ac;
-    --foreground: #0d1647;
-    --hover: #b5e2ff;
+	/* default */
+	--background: #3c58ac;
+	--foreground: #0d1647;
+	--hover: #b5e2ff;
 
-    /* christmas */
-    --background: #00863d;
-    --foreground: #cf001c;
-    --hover: #f4bbc2;
+	/* christmas */
+	--background: #00863d;
+	--foreground: #cf001c;
+	--hover: #f4bbc2;
 
-    /* winter */
-    --background: #ffffff;
-    --foreground: #d0c5f0;
-    --hover: #e0daf2;
+	/* winter */
+	--background: #ffffff;
+	--foreground: #d0c5f0;
+	--hover: #e0daf2;
 
-    /* rainforest leaves */
-    --background: #ffffff;
-    --foreground: #013020;
-    --hover: #b2d4ab;
+	/* rainforest leaves */
+	--background: #ffffff;
+	--foreground: #013020;
+	--hover: #b2d4ab;
+
+	/* mountains */
+	--background: #ffffff;
+	--foreground: #8b4000;
+	--hover: #e49b0f;
 }
 
 h1 {
-    margin: 15vh 7vh 7vh 7vh;
+	margin: 15vh 7vh 7vh 7vh;
 }
 
 .info_cluster {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: stretch;
-    width: auto;
-    max-width: 40vh;
-    margin: auto;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: stretch;
+	width: auto;
+	max-width: 40vh;
+	margin: auto;
 }
 
 .input_pair {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: center;
-    max-width: 40vh;
-    min-width: 30vh;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	align-items: center;
+	max-width: 40vh;
+	min-width: 30vh;
 
-    border: none;
-    background: var(--foreground);
-    border-radius: 3em;
+	border: none;
+	background: var(--foreground);
+	border-radius: 3em;
 
-    padding: 1em;
+	padding: 1em;
 }
 
 .spread_plan {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: stretch;
-    max-width: 40vh;
-    min-width: 30vh;
-    margin: 0.5vh 0 0 0;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	max-width: 40vh;
+	min-width: 30vh;
+	margin: 0.5vh 0 0 0;
 }
 .spread_plan > p {
-    margin: 0;
-    text-align: right;
-    max-width: 30vh;
+	margin: 0;
+	text-align: right;
+	max-width: 30vh;
 }
 
 input,
 select,
 select option {
-    background-color: aliceblue;
-    height: 2em;
-    width: 3em;
-    font-family: alegreya;
-    font-size: medium;
-    text-align: center;
-    color: var(--foreground);
-    border: none;
-    border-radius: 1em;
+	background-color: aliceblue;
+	height: 2em;
+	width: 3em;
+	font-family: alegreya;
+	font-size: medium;
+	text-align: center;
+	color: var(--foreground);
+	border: none;
+	border-radius: 1em;
 }
 
 label {
-    text-transform: lowercase;
-    text-align: center;
-    font-size: 2vh;
+	text-transform: lowercase;
+	text-align: center;
+	font-size: 2vh;
 
-    margin: 0.5em 0.8em;
+	margin: 0.5em 0.8em;
 }
 
 .space_under {
-    margin-bottom: 15vh;
+	margin-bottom: 15vh;
 }
 
 ul {
-    border: none;
-    background: var(--foreground);
-    border-radius: 3em;
+	border: none;
+	background: var(--foreground);
+	border-radius: 3em;
 
-    margin: 0 0;
-    padding: 1em 2em 1em 2.5em;
+	margin: 0 0;
+	padding: 1em 2em 1em 2.5em;
 }
 
-input[type='submit'] {
-    height: auto;
-    width: auto;
-    padding: 2em;
+input[type="submit"] {
+	height: auto;
+	width: auto;
+	padding: 2em;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 textarea {
-    background-color: aliceblue;
-    width: 14em;
-    height: 6em;
-    font-family: alegreya;
-    font-size: medium;
-    text-align: start;
-    color: var(--foreground);
-    border: none;
-    border-radius: 1em;
+	background-color: aliceblue;
+	width: 14em;
+	height: 6em;
+	font-family: alegreya;
+	font-size: medium;
+	text-align: start;
+	color: var(--foreground);
+	border: none;
+	border-radius: 1em;
 }
 
 select {
-    width: 6em;
-    text-align-last: center;
+	width: 6em;
+	text-align-last: center;
 }
 
 select option {
-    text-align: left;
+	text-align: left;
 }
 
 .reps {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: center;
-    border: none;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	align-items: center;
+	border: none;
 }
 
 .reps > p {
-    margin: 0;
-    margin-left: 0.25em;
+	margin: 0;
+	margin-left: 0.25em;
 }
 
 .temporary_note {
-    color: #ff99cc;
+	color: #ff99cc;
 }
