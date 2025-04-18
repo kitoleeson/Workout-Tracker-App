@@ -17,12 +17,5 @@ A simple website for tracking workouts and monitoring progress. This website aim
 
 ## 📸 Screenshots
 
-> *(Add screenshots or a GIF demo of your app here!)*
-
-## 🧪 Getting Started
-
-### 1. Clone the repo
-
-```bash
-git clone https://github.com/yourusername/workout-tracker.git
-cd workout-tracker
+![image](https://github.com/user-attachments/assets/d3ebd205-e957-47b2-9a34-a292e2737f88)
+![image](https://github.com/user-attachments/assets/2705e30b-b452-4adc-b773-febdc1b7dc25)
