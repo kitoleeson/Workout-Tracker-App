@@ -6,7 +6,7 @@ A simple website for tracking workouts and monitoring progress. This website aim
 
 - 🏋️ Log workouts with exercise, sets, reps, and personalized notes.
 - 📈 Track progress over time with previous workout memory (graphs & calendar coming soon!).
-- 🛠️ Tailored routines for strength, cardio, flexibility, and more to match your goals and style 🏃‍♂️🏋️‍♀️🧘.
+- 🛠️ Tailored routines for strength, cardio, flexibility, and more to match your goals and style.
 - 👥 Support multiple user profiles — each person’s workouts and progress are tracked independently, so everyone stays on their own fitness journey.
 
 ## 🛠️ Tech Stack
