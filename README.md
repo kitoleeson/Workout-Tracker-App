@@ -19,3 +19,6 @@ A simple website for tracking workouts and monitoring progress. This website aim
 
 ![image](https://github.com/user-attachments/assets/d3ebd205-e957-47b2-9a34-a292e2737f88)
 ![image](https://github.com/user-attachments/assets/2705e30b-b452-4adc-b773-febdc1b7dc25)
+
+## Hosting
+The website it hosted on Render's free server service at: https://kitos-workout-tracker.onrender.com/
