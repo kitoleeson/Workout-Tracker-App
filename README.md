@@ -1,21 +1,19 @@
-# 💪🏾 Workout Tracker
+# Kito's Workout Tracker
 
-A simple web app for tracking workouts and monitoring progress. Whether you're lifting weights, running, or doing yoga, this app helps you stay accountable and organized with your fitness journey.
+A simple website for tracking workouts and monitoring progress. This website aims to remove any inefficiencies, so that my friends and I can focus on lifting weights.
 
-## 🚀 Features
+## Features
 
-- 🏋️ Log workouts with type, sets, reps, duration, and notes
-- 📈 Track progress over time with clean visuals and summaries
-- 📅 Calendar view to keep track of workout frequency
-- 🔍 Search and filter past workouts
-- 🧠 Personalized insights and suggestions (coming soon!)
+- 🏋️ Log workouts with exercise, sets, reps, and personalized notes.
+- 📈 Track progress over time with previous workout memory (graphs & calendar coming soon!).
+- 🛠️ Tailored routines for strength, cardio, flexibility, and more to match your goals and style 🏃‍♂️🏋️‍♀️🧘.
+- 👥 Support multiple user profiles — each person’s workouts and progress are tracked independently, so everyone stays on their own fitness journey.
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React / Next.js / Tailwind CSS  
-- **Backend:** Node.js / Express / MongoDB  
-- **Auth:** JWT-based authentication  
-- **Charts & Analytics:** Chart.js / D3.js
+- **Frontend:** JS / CSS / HTML
+- **Backend:** JS / Express / MongoDB
+- **Charts & Analytics:** Chart.js / D3.js (coming soon)
 
 ## 📸 Screenshots
 
