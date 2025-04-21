@@ -11,7 +11,7 @@ A simple website for tracking workouts and monitoring progress. This website aim
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** JS / CSS / HTML
+- **Frontend:** JavaScript / HTML / CSS
 - **Backend:** Node.js / Express / MongoDB
 - **Charts & Analytics:** Chart.js / D3.js (coming soon)
 - **Hosting:** Render
