@@ -283,7 +283,7 @@ mongoose
 		console.log("connected to db");
 		app.listen(port, () => {
 			console.log(`listening at ${port}`);
-			json2schema(rolph2025preseason);
+			// json2schema(rolph2025preseason);
 			// clearDatabases();
 		});
 	})
