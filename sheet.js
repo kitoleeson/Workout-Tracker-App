@@ -4,7 +4,7 @@ const fs = require("fs");
 const { parse } = require("csv-parse");
 
 const data = [];
-fs.createReadStream("csvs/graham 3-day ppl 2025/legs.csv")
+fs.createReadStream("csvs/rolph 2025 preseason/everything.csv")
 	.pipe(parse({ delimiter: ",", from_line: 1 }))
 	.on("data", function (row) {
 		// console.log(row);
@@ -23,7 +23,7 @@ fs.createReadStream("csvs/graham 3-day ppl 2025/legs.csv")
 				number: d[0],
 				name: d[1],
 				sets: d[2],
-				reps: d[3],
+				reps: d[3] == "failure" ? "99" : d[3],
 				notes: d[4],
 			};
 			console.log(exercise);

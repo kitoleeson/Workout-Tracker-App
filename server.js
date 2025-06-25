@@ -12,6 +12,268 @@ const Program = require("./models/program");
 
 const app = express();
 
+const rolph2025preseason = {
+	name: "rolph 2025 preseason pple",
+	split: "pple",
+	workouts: [
+		// push
+		{
+			name: "push",
+			duration: 90,
+			exercises: [
+				{
+					number: "1",
+					name: "incline dumbell bench press",
+					sets: "3",
+					reps: "8-10",
+					notes: ["slightly arched back", "arms at a 45-55° angle from body", "push through feet to explode up"],
+				},
+				{
+					number: "2",
+					name: "floor-reset skullcrushers",
+					sets: "3",
+					reps: "8",
+					notes: ["keep elbows stationary, behind head", "brace core throughout exercise"],
+				},
+				{
+					number: "3",
+					name: "machine chest flye",
+					sets: "3",
+					reps: "12",
+					notes: [
+						"brace core throughout exercise",
+						"keep chest up high and puffed out",
+						"feel big stretch at end",
+						"integrated partials on last set (1 rep full rom, 1 rep lengthened partial)",
+					],
+				},
+				{
+					number: "4",
+					name: "cable tricep rope pushdown",
+					sets: "3",
+					reps: "10",
+					notes: [
+						"keep chest upright and puffed out",
+						"keep elbows stationary at sides",
+						"full lockout and push arms outwards",
+					],
+				},
+				{
+					number: "5",
+					name: "deficit pushups",
+					sets: "2",
+					reps: "99",
+					notes: [
+						"raise hands on plates, descend underneath hand level",
+						"brace core throughout exercise",
+						"drop scap and engage abs",
+						"go for strict form, not number",
+					],
+				},
+				{
+					number: "6",
+					name: "assult bike intervals",
+					sets: "1",
+					reps: "8",
+					notes: ["push hard"],
+				},
+			],
+		},
+		// pull
+		{
+			name: "pull",
+			duration: 90,
+			exercises: [
+				{
+					number: "1",
+					name: "lat pulldown",
+					sets: "4",
+					reps: "10",
+					notes: [
+						"middle overhand grip (1.5x shoulder)",
+						"touch bar to bottom of chest",
+						"use thumbless grip for mind-muscle",
+						"pull scap first, then pull arms down",
+						"feel lats deep stretch at top",
+						"slow eccentric",
+					],
+				},
+				{
+					number: "2",
+					name: "omni-grip assisted pull up",
+					sets: "3",
+					reps: "10",
+					notes: [
+						"normal, neutral, then wide grip",
+						"scap pull up first, then bend elbows",
+						"puffy and high chest",
+						"slow eccentric",
+					],
+				},
+				{
+					number: "3",
+					name: "ez-bar preacher curls",
+					sets: "3",
+					reps: "8",
+					notes: ["warm up first (very important)", "slow up and down"],
+				},
+				{
+					number: "4",
+					name: "single-arm cable baysian curls",
+					sets: "2",
+					reps: "10",
+					notes: ["stationary elbows behind body", "take it slow"],
+				},
+				{
+					number: "5",
+					name: "omni-direction face pulls",
+					sets: "3",
+					reps: "12",
+					notes: [
+						"different direction for each set",
+						"low→high, mid→mid, high→low",
+						"hold ropes reverse grip",
+						"pull metal piece to forehead",
+					],
+				},
+				{
+					number: "6",
+					name: "skier intervals",
+					sets: "1",
+					reps: "8",
+					notes: ["get low on squat", "pull down hard"],
+				},
+			],
+		},
+		// legs
+		{
+			name: "legs",
+			duration: 90,
+			exercises: [
+				{
+					number: "1",
+					name: "barbell back squat",
+					sets: "3",
+					reps: "10, 8, 6",
+					notes: [
+						"do 2 sets of back hyperextensions before to activate lower back",
+						"brace core throughout exercise",
+						"go for depth and slowness",
+						"go heavier each set",
+						"feet slightly pointed outwards, externally rotate knees",
+					],
+				},
+				{
+					number: "2",
+					name: "barbell RDL",
+					sets: "3",
+					reps: "8-10",
+					notes: ["slight bend in knees", "hinge at hips", "keep butt pushed back"],
+				},
+				{
+					number: "3",
+					name: "standing calf-raises",
+					sets: "3",
+					reps: "15",
+					notes: ["stay in the bottom half", "fast concentric, slow eccentric", "on leg press if no machine"],
+				},
+				{
+					number: "4",
+					name: "seated leg curl",
+					sets: "3",
+					reps: "12",
+					notes: ["lean forward in seat to stretch hamstrings", "fast concentric, slow eccentric"],
+				},
+				{
+					number: "5",
+					name: "seated leg extension",
+					sets: "3",
+					reps: "12",
+					notes: ["lean back in seat to stretch quads", "fast concentric, slow eccentric"],
+				},
+				{
+					number: "6",
+					name: "rower intervals",
+					sets: "1",
+					reps: "8",
+					notes: ["full extention through legs", "pull handles to ribcage"],
+				},
+			],
+		},
+		// everything
+		{
+			name: "everything",
+			duration: 90,
+			exercises: [
+				{
+					number: "1",
+					name: "hang clean",
+					sets: "4",
+					reps: "4",
+					notes: ["quick snap", "extend through whole body", "keep bar close to body"],
+				},
+				{
+					number: "2",
+					name: "seated cable row (close grip)",
+					sets: "3",
+					reps: "10",
+					notes: [
+						"squeeze shoulder blades together",
+						"use thumbless grip for mind-muscle",
+						"pull scap first, then pull arms back",
+						"feel traps and shoulders pull apart at end",
+					],
+				},
+				{
+					number: "3",
+					name: "cross-body cable y-raise",
+					sets: "3",
+					reps: "12-15",
+					notes: [
+						"draw out a sword at bottom",
+						"flick out the sword at top",
+						"lift cable out and back",
+						"diagonal plane of motion",
+					],
+				},
+				{
+					number: "4",
+					name: "machine rear delt flye",
+					sets: "3",
+					reps: "12",
+					notes: [
+						"use a yoga block to get big stretch",
+						"reach out and back, sweep outwards",
+						"slightly round back",
+						"omni-grip to taste",
+					],
+				},
+				{
+					number: "5",
+					name: "high cable forearm pull-down ",
+					sets: "3",
+					reps: "12",
+					notes: ["keep elbows close to body", "go heavy, make it difficult", "slow eccentric"],
+				},
+				{
+					number: "6",
+					name: "abs circut",
+					sets: "3",
+					reps: "60",
+					notes: ["60s of pull-throughs, sideplanks, v-sits"],
+				},
+				{
+					number: "7",
+					name: "assult bike intervals ",
+					sets: "1",
+					reps: "500m",
+					notes: ["simulates testing"],
+				},
+			],
+		},
+	],
+};
+
 // connect to mongodb
 const dbURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_KEY}@workout-tracker.bc8ncat.mongodb.net/workouts`;
 const port = process.env.PORT || 3001;
@@ -21,7 +283,7 @@ mongoose
 		console.log("connected to db");
 		app.listen(port, () => {
 			console.log(`listening at ${port}`);
-			// json2schema(graham2025ppl);
+			json2schema(rolph2025preseason);
 			// clearDatabases();
 		});
 	})
